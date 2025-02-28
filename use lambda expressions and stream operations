@@ -1,0 +1,30 @@
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def __repr__(self):
+        return f"Student(name={self.name}, marks={self.marks})"
+
+# Sample list of Student objects
+students = [
+    Student("Alice", 85),
+    Student("Bob", 60),
+    Student("Charlie", 90),
+    Student("David", 72),
+    Student("Eve", 78),
+    Student("Frank", 92),
+]
+
+# Using lambda expressions and stream-like operations (filter, sorted, map)
+filtered_sorted_students = (
+    sorted(  # Sort the students by marks
+        filter(lambda student: student.marks > 75, students),  # Filter students who scored above 75%
+        key=lambda student: student.marks  # Sort by marks
+    )
+)
+
+# Displaying names of students who scored above 75% after sorting by marks
+print("Students scoring above 75% sorted by marks:")
+for student in filtered_sorted_students:
+    print(student.name)
